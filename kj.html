@@ -1515,21 +1515,17 @@
             return;
         }
         for (const i of questions) {
-            if (!i.a) {
-              console.log(i);
+            if (i.q.indexOf(event.target.value) >= 0) {
+                text += `<li><span>${i.q}</span>`;
+                console.log(i)
+                if (typeof i.a === 'string') {
+                    i.a = [i.a];
+                }
+                for (const o of i.a) {
+                    text += `<br><span>${o}</span>`;
+                }
+                text += '</li>';
             }
-
-            // if (i.q.indexOf(event.target.value) >= 0) {
-            //     text += `<li><span>${i.q}</span>`;
-            //     console.log(i)
-            //     if (typeof i.a === 'string') {
-            //         i.a = [i.a];
-            //     }
-            //     for (const o of i.a) {
-            //         text += `<br><span>${o}</span>`;
-            //     }
-            //     text += '</li>';
-            // }
         }
         result.innerHTML = text;
     });
